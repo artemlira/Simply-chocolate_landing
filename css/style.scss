@@ -13,6 +13,7 @@ $phone: 480 + px;
 html,
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -24,7 +25,6 @@ body {
   line-height: 128.571%;
   letter-spacing: -0.28px;
   background-color: $bg-color;
-  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
 }
@@ -43,7 +43,14 @@ body {
 
 /* ===================================== Header ============================================== */
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   padding-block: 24px;
+  background-color: $bg-color;
+  z-index: 3;
+
   /* .header_container */
   &_container {
     display: flex;
@@ -72,6 +79,8 @@ body {
     align-items: center;
     justify-content: space-between;
     column-gap: 137px;
+    position: relative;
+    z-index: 3;
     @media screen and (max-width: 1100px) {
       column-gap: 70px;
     }
@@ -515,4 +524,371 @@ body {
   }
 }
 
+/* ========================================= benefits ========================================== */
+.benefits {
+  // .benefits_section
+  &_section {
+    background: $darkviolet-color;
+    padding: 50px;
+    margin-top: 72px;
+    position: relative;
+    z-index: 0;
+    @media screen and (max-width: 998px) {
+      padding: 50px 0px;
+      margin-top: 50px;
+    }
+
+    @media screen and (max-width: $phone) {
+      padding: 20px;
+    }
+  }
+
+  // .benefits_container
+  &_container {
+    display: flex;
+    gap: 88px;
+
+    @media screen and (max-width: 998px) {
+      flex-wrap: wrap;
+      gap: 32px 60px;
+    }
+  }
+  // .benefits_body
+  &_body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    flex: 0 1 308px;
+
+    @media screen and (min-width: 997.98px) {
+      &:not(:last-child) {
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 1px;
+          height: 50%;
+          background: rgba(255, 255, 255, 0.5);
+          top: 50%;
+          transform: translateY(-50%);
+          right: -18px;
+        }
+      }
+    }
+  }
+  // .benefits_img
+  &_img {
+    width: 62px;
+    height: 62px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: 4px;
+    img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  // .benefits_title
+  &_title {
+    color: $white-color;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: normal;
+  }
+  // .benefits_description
+  &_description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: normal;
+    letter-spacing: -0.28px;
+  }
+}
+/* ========================================= taste ========================================== */
+.taste {
+  // .taste_section
+  &_section {
+    margin-top: 128px;
+  }
+  // .taste_container
+  &_container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+  }
+  // .taste_text
+  &_text {
+    max-width: 486px;
+    color: $black-color;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 128.57%;
+    letter-spacing: -0.28px;
+    margin-bottom: 22px;
+  }
+  // .taste_body
+  &_body {
+    display: flex;
+    gap: 19px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media screen and (max-width: $tablet) {
+      gap: 32px;
+    }
+
+    @media screen and (max-width: $phone) {
+      gap: 20px;
+    }
+  }
+  // .taste_card
+  &_card {
+    padding: 28px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    position: relative;
+    overflow: hidden;
+    font-weight: 600;
+    line-height: 128.57%; /* 128.571% */
+    letter-spacing: -0.28px;
+    text-transform: uppercase;
+
+    @media screen and (max-width: $tablet) {
+      padding: 28px 55px;
+    }
+
+    &:first-child {
+      background-color: $orange-color;
+      color: $white-color;
+    }
+    &:nth-child(2),
+    &:nth-child(4) {
+      background-color: $white-color;
+      border: 1px solid $orange-color;
+    }
+    &:nth-child(3) {
+      background-color: $darkviolet-color;
+      color: $white-color;
+    }
+
+    &:hover {
+      .card_hover {
+        bottom: 0;
+      }
+    }
+  }
+}
+.section_title {
+  color: $black-color;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 116.67%; /* 116.667% */
+  letter-spacing: -0.72px;
+  text-transform: uppercase;
+  span {
+    color: $orange-color;
+  }
+}
+.taste_card {
+  // .taste_card__img
+  &__img {
+    width: 206px;
+    height: 160px;
+
+    @media screen and (max-width: $tablet) {
+      width: 224px;
+      height: 170px;
+    }
+
+    img {
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.card_hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: $white-color;
+  left: 0;
+  bottom: -100%;
+  transition: all 0.3s ease;
+}
+.hover {
+  // .hover_title
+  &_title {
+    color: $black-color;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.54px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  // .hover_text
+  &_text {
+    color: $black-color;
+    text-overflow: ellipsis;
+    // white-space: nowrap;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 128.57%; /* 128.571% */
+    letter-spacing: -0.28px;
+  }
+}
+.buttons {
+  display: flex;
+  gap: 6px;
+  button {
+    padding: 6px 16px;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    transition: all 0.3s ease;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 120% */
+    &:first-child {
+      background-color: $orange-color;
+      color: $white-color;
+    }
+
+    &:last-child {
+      background-color: transparent;
+      color: $black-color;
+      border: 1px solid $orange-color;
+    }
+  }
+}
+
+/* ========================================= made ========================================== */
+.made {
+  // .made_section
+  &_section {
+    margin-top: 128px;
+  }
+}
+
+.made_body {
+  margin-top: 50px;
+  display: flex;
+  gap: 20px;
+
+  @media screen and (max-width: 1100px) {
+    flex-direction: column;
+  }
+  // .made_body__video
+  &__video {
+    flex: 0 0 600px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 1100px) {
+      flex: 0 0 400px;
+    }
+
+    @media screen and (max-width: $phone) {
+      flex: 0 0 500px;
+    }
+  }
+
+  // .made_body__video-play
+  &__video-play {
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    @media screen and (max-width: $phone) {
+      width: 35px;
+      height: 35px;
+    }
+
+    circle,
+    path {
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+
+      circle {
+        stroke: $orange-color;
+      }
+      path {
+        fill: $orange-color;
+      }
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // .made_body__text
+  &__text {
+    padding: 32px;
+  }
+  // .made_body__title
+  &__title {
+    color: $black-color;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 133.33%; /* 133.333% */
+    margin-bottom: 28px;
+  }
+  // .made_body__list
+  &__list {
+    color: $black-color;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media screen and (max-width: 1100px) {
+      gap: 18px;
+    }
+  }
+  // .made_body__item
+  &__item {
+    position: relative;
+    margin-left: 16px;
+    &::before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 100%;
+      background-color: $black-color;
+      left: -16px;
+      top: 5px;
+    }
+  }
+}
+
+/* ========================================= footer ========================================== */
+/* ========================================= footer ========================================== */
+/* ========================================= footer ========================================== */
+/* ========================================= footer ========================================== */
+/* ========================================= footer ========================================== */
 /* ========================================= footer ========================================== */
