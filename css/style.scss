@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap');
+
+$black-color: #111;
+$orange-color: #fd9222;
+$darkviolet-color: #1e1823;
+$white-color: #ffffff;
+$hover-orange-color: #fcf1e0;
+$bg-color: #fafafa;
+$burgerBreakpoint: 940 + px;
+$tablet: 768 + px;
+$phone: 480 + px;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: $black-color;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 128.571%;
+  letter-spacing: -0.28px;
+  background-color: $bg-color;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+}
+
+[class*='_container'] {
+  max-width: 1200px;
+  padding-inline: 32px;
+  margin-inline: auto;
+}
+
+.header,
+.main,
+.footer {
+  width: 100%;
+}
+
+/* ===================================== Header ============================================== */
+.header {
+  padding-block: 24px;
+  /* .header_container */
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  /* .header_logo */
+  &_logo {
+    width: 213px;
+    height: 24px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    @media screen and (max-width: 992px) {
+      width: 170px;
+      height: 21px;
+    }
+  }
+  // header_wrapper__nav
+  &_wrapper__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 137px;
+    @media screen and (max-width: 1100px) {
+      column-gap: 70px;
+    }
+    @media screen and (max-width: 986px) {
+      column-gap: 30px;
+    }
+    @media screen and (max-width: $burgerBreakpoint) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 290px;
+      height: 100%;
+      background-color: $darkviolet-color;
+      flex-direction: column;
+      padding: 100px 50px 24px;
+      transition: right 0.5s ease;
+      @media screen and (max-width: $phone) {
+        width: 220px;
+        padding: 80px 45px 20px;
+      }
+    }
+  }
+
+  /* .header_social */
+  &_social {
+    display: flex;
+    gap: 18px;
+    svg {
+      path {
+        transition: 0.3s all ease;
+      }
+      &:hover {
+        path {
+          stroke: $orange-color;
+        }
+      }
+    }
+  }
+}
+.header_nav {
+  /* .header_nav__list */
+  &__list {
+    display: flex;
+    gap: 10px 26px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  /* .header_nav__item */
+  &__item {
+    transition: 0.3s all ease;
+    &:hover {
+      color: $orange-color;
+    }
+  }
+}
+
+// ==================== стили активного мобильного меню ====================
+// header_wrapper__nav active
+.header_wrapper__nav.active {
+  right: 0;
+
+  .header_nav__list {
+    color: $white-color;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .header_social {
+    svg {
+      path {
+        transition: 0.3s all ease;
+        stroke: $white-color;
+      }
+      &:hover {
+        path {
+          stroke: $orange-color;
+        }
+      }
+    }
+  }
+}
+
+// ==================== стили кнопки burger ====================
+.burger {
+  display: none;
+  background-color: transparent;
+  z-index: 3;
+  @media screen and (max-width: $burgerBreakpoint) {
+    display: flex;
+    position: relative;
+    height: 16px;
+    width: 24px;
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+
+    &::after,
+    &::before,
+    & span {
+      display: block;
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $black-color;
+      transform-origin: 50% 50%;
+      border-radius: 8px;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    & span {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      bottom: 0px;
+    }
+
+    &.active {
+      &::before {
+        background-color: $white-color;
+        animation: moveTopLine 0.4s forwards;
+        transition: all 0.3s ease;
+      }
+      & span {
+        animation: moveMidLine 0.4s forwards;
+      }
+      &::after {
+        background-color: $white-color;
+        animation: moveBotLine 0.4s forwards;
+        transition: all 0.3s ease;
+      }
+    }
+
+    // & {
+    //   &::before {
+    //     animation: moveTopLineRev 0.4s forwards;
+    //   }
+    //   & span {
+    //     animation: moveMidLineRev 0.4s forwards;
+    //   }
+    //   &::after {
+    //     animation: moveBotLineRev 0.4s forwards;
+    //   }
+    // }
+
+    @keyframes moveTopLine {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.5);
+        top: -1px;
+      }
+      50% {
+        transform: scale(1);
+      }
+      75% {
+        transform: scale(1) translateY(-50%);
+        top: 50%;
+      }
+      100% {
+        transform: scale(1) translateY(-50%) rotate(-45deg);
+        top: 50%;
+      }
+    }
+    @keyframes moveTopLineRev {
+      0% {
+        transform: scale(1) translateY(-50%) rotate(-45deg);
+        top: 50%;
+      }
+      25% {
+        transform: scale(1.5) translateY(-50%) rotate(-45deg);
+        top: 50%;
+      }
+      50% {
+        transform: scale(1) translateY(-50%) rotate(-45deg);
+        top: 50%;
+      }
+      75% {
+        transform: scale(1) translateY(-50%) rotate(0);
+        top: 50%;
+      }
+      100% {
+        transform: scale(1) translateY(0);
+        top: 0;
+      }
+    }
+    @keyframes moveMidLine {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.5);
+      }
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      75% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    @keyframes moveMidLineRev {
+      0% {
+        opacity: 0;
+      }
+      25% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0;
+      }
+      75% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes moveBotLine {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.5);
+        bottom: -1px;
+      }
+      50% {
+        transform: scale(1);
+      }
+      75% {
+        transform: scale(1) translateY(-50%);
+        top: 50%;
+      }
+      100% {
+        transform: scale(1) translateY(-50%) rotate(45deg);
+        top: 50%;
+      }
+    }
+    @keyframes moveBotLineRev {
+      0% {
+        transform: scale(1) translateY(-50%) rotate(45deg);
+        top: 50%;
+      }
+      25% {
+        transform: scale(1.5) translateY(-50%) rotate(45deg);
+        top: 50%;
+      }
+      50% {
+        transform: scale(1) translateY(-50%) rotate(45deg);
+        top: 50%;
+      }
+      75% {
+        transform: scale(1) translateY(-50%) rotate(0);
+        top: 50%;
+      }
+      100% {
+        transform: scale(1) translateY(0);
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.burger.active {
+  transition: all 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+    &::after,
+    &::before {
+      background-color: $orange-color;
+    }
+  }
+}
+
+/* ========================================= main ========================================== */
+.main {
+  flex: 1 0 auto;
+}
+
+/* ========================================= Hero ========================================== */
+
+.hero {
+  // .hero_section
+  &_section {
+    padding-inline: 32px;
+  }
+  // .hero_container
+  &_container {
+    min-height: 600px;
+    border-radius: 15px;
+    max-width: 1136px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    @media screen and (max-width: $tablet) {
+      min-height: 890px;
+    }
+
+    @media screen and (max-width: $phone) {
+      min-height: 621px;
+      padding: 20px;
+    }
+  }
+  // .hero_title
+  &_title {
+    max-width: 484px;
+    color: $white-color;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 121.42%;
+    letter-spacing: -0.84px;
+    margin-bottom: 32px;
+
+    @media screen and (max-width: $phone) {
+      max-width: 295px;
+      font-size: 20px;
+      line-height: 120%;
+      letter-spacing: -0.6px;
+    }
+  }
+  // .hero_buttons
+  &_buttons {
+    display: flex;
+    gap: 32px 14px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+.buy {
+  display: flex;
+  padding: 14px 40px;
+  align-items: center;
+  justify-content: center;
+  color: $white-color;
+  background-color: $orange-color;
+  border-radius: 100px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  &:hover {
+    color: $orange-color;
+    background-color: $hover-orange-color;
+  }
+
+  @media screen and (max-width: $phone) {
+    padding: 12px 28px;
+  }
+}
+
+.hero_buttons__how-made {
+  display: flex;
+  padding: 14px 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  color: $white-color;
+  font-weight: 600;
+  line-height: normal;
+  border: 1px solid $white-color;
+  background-color: transparent;
+  margin-right: auto;
+  transition: all 0.3s ease;
+  &:hover {
+    color: $orange-color;
+    background-color: $white-color;
+    border: 1px solid $orange-color;
+  }
+
+  @media screen and (max-width: $phone) {
+    padding: 12px 28px;
+  }
+}
+.hero_scroll {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    .hero_scroll__text {
+      color: $orange-color;
+    }
+
+    .hero_scroll__down {
+      svg {
+        path {
+          fill: $white_color;
+        }
+      }
+      background: $orange-color;
+    }
+  }
+  // .hero_scroll__text
+  &__text {
+    color: $white-color;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 128.57%; /* 128.571% */
+    letter-spacing: -0.42px;
+    @media screen and (max-width: $phone) {
+      font-size: 12px;
+      line-height: 116.66%; /* 116.667% */
+      letter-spacing: -0.36px;
+    }
+  }
+  // .hero_scroll__down
+  &__down {
+    width: 38px;
+    height: 38px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 22px;
+      height: 22px;
+      fill: $orange-color;
+    }
+    background: $white-color;
+
+    @media screen and (max-width: $phone) {
+      width: 28px;
+      height: 28px;
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+/* ========================================= footer ========================================== */
