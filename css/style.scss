@@ -377,6 +377,7 @@ body {
   // .hero_section
   &_section {
     padding-inline: 32px;
+    margin-top: 72px;
   }
   // .hero_container
   &_container {
@@ -1135,5 +1136,73 @@ body {
 }
 
 /* ========================================= Subscribe ========================================== */
+.subscribe {
+  // .subscribe_section
+  &_section {
+    margin-top: 128px;
+    padding-block: 72px;
+
+    @media screen and (max-width: $tablet) {
+      margin-top: 100px;
+    }
+    @media screen and (max-width: $phone) {
+      margin-top: 72px;
+      padding: 63px 20px;
+    }
+  }
+  // .subscribe_container
+  &_container {
+    color: $white-color;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    text-align: center;
+  }
+  // .subscribe_title
+  &_title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 116.67%; /* 116.667% */
+    letter-spacing: -0.72px;
+    text-transform: uppercase;
+
+    @media screen and (max-width: phone) {
+      font-size: 20px;
+      line-height: 120%; /* 120% */
+      letter-spacing: -0.6px;
+    }
+  }
+  // .subscribe_text
+  &_text {
+    max-width: 467px;
+    @media screen and (max-width: $phone) {
+      max-width: 326px;
+    }
+  }
+  // .subscribe_btn
+  &_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    background: $orange-color;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 14px 40px;
+    transition: all 0.3s ease;
+    &:hover {
+      background: $hover-orange-color;
+      color: $orange-color;
+    }
+
+    @media screen and (max-width: $phone) {
+      font-size: 14px;
+    }
+  }
+}
 
 /* ========================================= footer ========================================== */
