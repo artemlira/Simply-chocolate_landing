@@ -14,6 +14,7 @@ html,
 body {
   height: 100%;
   scroll-behavior: smooth;
+  scroll-padding-top: 75px;
 }
 
 body {
@@ -43,7 +44,7 @@ body {
 
 /* ===================================== Header ============================================== */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -609,6 +610,9 @@ body {
   // .taste_section
   &_section {
     margin-top: 128px;
+    @media screen and (max-width: $phone) {
+      margin-top: 72px;
+    }
   }
   // .taste_container
   &_container {
@@ -780,6 +784,9 @@ body {
   // .made_section
   &_section {
     margin-top: 128px;
+    @media screen and (max-width: $phone) {
+      margin-top: 72px;
+    }
   }
 }
 .made_body {
@@ -888,6 +895,9 @@ body {
   // .products_section
   &_section {
     margin-top: 128px;
+    @media screen and (max-width: $phone) {
+      margin-top: 72px;
+    }
   }
   // .products_slider
   &_slider {
@@ -962,8 +972,85 @@ body {
   border-radius: 6px;
 }
 
-/* ========================================= footer ========================================== */
-/* ========================================= footer ========================================== */
-/* ========================================= footer ========================================== */
-/* ========================================= footer ========================================== */
+/* ========================================= top sellers ========================================== */
+.sellers {
+  // .sellers_section
+  &_section {
+    margin-top: 128px;
+    @media screen and (max-width: $phone) {
+      margin-top: 72px;
+    }
+  }
+  // .sellers_products
+  &_products {
+    margin-top: 50px;
+    display: grid;
+    gap: 32px 16px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: minmax(1fr, 464px) minmax(1fr, 72px);
+    grid-template-areas:
+      '. . .'
+      'text text .';
+
+    @media screen and (max-width: 940px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: minmax(1fr, 464px) minmax(1fr, 90px);
+      grid-template-areas:
+        '. .'
+        'text .';
+    }
+
+    @media screen and (max-width: $phone) {
+      grid-template-columns: 1fr;
+      margin-top: 32px;
+      grid-template-areas:
+        '.'
+        'text';
+      gap: 20px;
+    }
+  }
+  // .sellers_product
+  &_product {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 464px;
+    flex: 1 0 368px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    @media screen and (max-width: 940px) {
+      &:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+  // .sellers_text
+  &_text {
+    max-width: 407px;
+    grid-area: text;
+    @media screen and (max-width: 940px) {
+      max-width: 306px;
+    }
+
+    @media screen and (max-width: $phone) {
+      margin-bottom: 12px;
+    }
+  }
+
+  // .sellers_btn
+  &_btn {
+    margin-left: auto;
+    @media screen and (max-width: $phone) {
+      margin-inline: auto;
+    }
+  }
+}
+
+/* ========================================= reviews ========================================== */
+
+/* ========================================= Subscribe ========================================== */
+
 /* ========================================= footer ========================================== */
