@@ -62,3 +62,32 @@ new Swiper('.products_slider', {
     delay: 1800,
   },
 });
+
+new Swiper('.reviews_slider', {
+  // Optional parameters
+  direction: 'horizontal', //ориентация прокрутки
+  loop: true, //бесконечность
+  spaceBetween: 16, //расстояние между слайдами
+  speed: 1000, //скорость прокрутки
+  slidesPerView: 1,
+  autoHeight: true,
+  breakpoints: {
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 28,
+    },
+    1100: {
+      slidesPerView: 3,
+    },
+  },
+
+  // Если нужна пагинация
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  // Автозапуск
+  autoplay: {
+    delay: 1800,
+  },
+});
