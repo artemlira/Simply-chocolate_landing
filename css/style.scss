@@ -1206,3 +1206,116 @@ body {
 }
 
 /* ========================================= footer ========================================== */
+.footer {
+  background-color: $darkviolet-color;
+  color: $white-color;
+  padding-block: 50px;
+
+  @media screen and (max-width: 680px) {
+    padding-block: 32px;
+  }
+  // .footer_body
+  &_body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 62px;
+    @media screen and (max-width: 680px) {
+      flex-direction: column;
+      margin-bottom: 32px;
+      align-items: stretch;
+      gap: 32px;
+    }
+  }
+  // .footer_title
+  &_title {
+    max-width: 300px;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 121.43%; /* 121.429% */
+    letter-spacing: -0.56px;
+    span {
+      color: $orange-color;
+    }
+
+    @media screen and (max-width: 680px) {
+      font-size: 24px;
+      line-height: 116.67%; /* 116.667% */
+      letter-spacing: -0.48px;
+    }
+  }
+  // .footer_social
+  &_social {
+    display: flex;
+    gap: 18px;
+  }
+}
+.footer_contacts__body {
+  display: flex;
+  gap: 63px;
+  @media screen and (max-width: $tablet) {
+    gap: 50px;
+  }
+  @media screen and (max-width: 680px) {
+    justify-content: space-between;
+  }
+}
+
+.footer_contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  // .footer_contacts__title
+  &__title {
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  // .footer_contacts__tel
+  &__tel,
+  &__mail {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      color: $orange-color;
+    }
+  }
+}
+.footer_instagram,
+.footer_twitter {
+  cursor: pointer;
+
+  &:hover {
+    path {
+      stroke: $orange-color;
+    }
+  }
+  path {
+    stroke: $white-color;
+    transition: all 0.3s ease;
+  }
+}
+
+.footer_nav {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+  // .footer_nav__list
+  &__list {
+    display: flex;
+    gap: 24px;
+
+    @media screen and (max-width: 640px) {
+      gap: 18px;
+      flex-direction: column;
+    }
+  }
+  // .footer_nav__item
+  &__item {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      color: $orange-color;
+    }
+  }
+}
